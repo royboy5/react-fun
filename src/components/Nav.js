@@ -1,11 +1,19 @@
 import React from 'react'
-
 import styled from 'styled-components'
 
 const NavContainer = styled.nav`
-  display: none;
+  opacity: 0;
   width: 100%;
   position: relative;
+  transition: 0.5s;
+  background-color: black;
+  z-index: 1000;
+
+  @media (min-width: 769px) {
+    opacity: 1;
+    width: auto;
+    transition: 0s;
+  }
 `
 
 const NavList = styled.ul`
@@ -14,6 +22,10 @@ const NavList = styled.ul`
   position: absolute;
   overflow: none;
   width: 100%;
+
+  @media (min-width: 769px) {
+    position: relative;
+  }
 `
 
 const NavItem = styled.li`
@@ -22,19 +34,29 @@ const NavItem = styled.li`
   margin-bottom: 1px;
   background-color: #000;
   color: #fff;
+  transition: 0.5s;
 
   &:hover {
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+  }
+
+  @media (min-width: 769px) {
+    min-width: 100px;
+    float: left;
+    transition: 0s;
+    margin-bottom: 0;
     background-color: #fff;
     color: #000;
   }
 `
 
-const Nav = () => {
+const Nav = props => {
   return (
     <NavContainer>
       <NavList>
-        <NavItem>Home</NavItem>
-        <NavItem>About</NavItem>
+        <NavItem onClick={props.showAuth}>Sign up</NavItem>
       </NavList>
     </NavContainer>
   )

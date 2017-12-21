@@ -4,7 +4,7 @@ const NavButton = styled.input`
   display: none;
 
   &:checked ~ nav {
-    display: block;
+    opacity: 1;
   }
 `
 
